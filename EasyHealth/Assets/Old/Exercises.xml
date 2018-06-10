@@ -1,0 +1,11 @@
+<?xmml version?"1.0" encoding="UTF-8"?>
+<ExerciseCollection>
+	<Exercises>
+		<Exercise name="Dips">
+			<Date>"18/01/27"</Date>
+			<Sets>3</Sets>
+			<Reps>10</Reps>
+			<Weight>5</Weight>
+		</Exercise>
+	</Exercises>
+</ExerciseCollection>
