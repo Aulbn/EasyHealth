@@ -11,11 +11,27 @@ public class DropdownScript : MonoBehaviour {
 	public GameObject listItemPrefab;
 	private List<string> nameList = new List<string> ();
 
-	public void ShowList(){
+	public void SetList(List<string> exercises){
+		nameList = exercises;
 		foreach (string s in nameList) {
-			GameObject g = Instantiate (listItemPrefab, container);
-			//g.text = s
+			GameObject i = Instantiate (listItemPrefab, container);
+			i.GetComponent<ExerciseListItem>().SetText (s);
 		}
+	}
+
+//	public void ShowList(){
+//		foreach (string s in nameList) {
+//			GameObject i = Instantiate (listItemPrefab, container);
+//			i.GetComponent<ExerciseListItem>().SetText (s);
+//		}
+//	}
+
+	public void ShowList(bool show){
+		list.SetActive (show); 
+	}
+
+	public void ToggleList(){
+		list.SetActive (!list.activeSelf); 
 	}
 
 	public void ClearList(){

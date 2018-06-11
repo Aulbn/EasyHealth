@@ -95,7 +95,7 @@ public class AddWorkout : MonoBehaviour {
 			w.StoreData (WorkoutManager.instance.GetConnectionString ());
 			print ("Workout Saved");
 			ResetInput ();
-			AppManager.instance.ToMainMenu ();
+			AppManager.instance.OpenMainMenu ();
 		}
 	}
 

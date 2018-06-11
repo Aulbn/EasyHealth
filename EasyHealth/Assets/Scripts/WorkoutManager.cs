@@ -19,6 +19,30 @@ public class WorkoutManager : MonoBehaviour {
 	}
 
 	void Start () {
+		List<string> tempList = LoadExerciseList();
+		foreach (string s in tempList) {
+			print (s);
+		}
+	}
+
+	public List<string> LoadExerciseList (){
+		List<string> tempList = new List<string> ();
+		using (IDbConnection dbConnection = new SqliteConnection (connectionString)) {
+			dbConnection.Open ();
+
+			using (IDbCommand dbCmd = dbConnection.CreateCommand()) {
+				string sqlQuery = String.Format("SELECT EName FROM Exercise");
+				dbCmd.CommandText = sqlQuery;
+
+				using (IDataReader reader = dbCmd.ExecuteReader ()) {
+					while (reader.Read ()) {
+						tempList.Add (reader.GetString (0));
+					}
+				}
+			}
+		}
+		tempList.Sort ();
+		return tempList;
 	}
 
 	public List<Workout> LoadWorkoutList (string exercise){

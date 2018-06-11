@@ -4,15 +4,19 @@ using UnityEngine;
 using System;
 using System.Data;
 using Mono.Data.Sqlite;
+using UnityEngine.UI;
 
 public class GraphDisplay : MonoBehaviour {
 
-	private List<Workout> workouts = new List<Workout>();
+	public InputField inputField;
+
+//	private List<Workout> workouts = new List<Workout>();
 	private List<Vector3> positions = new List<Vector3>();
 
 	private int startDate;
 	private int endDate;
 
+	[Header("Graph")]
 	public float graphBot = 0;
 	public float graphHeight = 3;
 	public float graphWidth = 5f;
@@ -21,14 +25,14 @@ public class GraphDisplay : MonoBehaviour {
 
 	void Start(){
 		lr = GetComponent<LineRenderer> ();
-		MakeGraph ("Chins");
+		MakeGraph ("Dips");
 	}
 
 	public void MakeGraph(string workout){
-		workouts = WorkoutManager.instance.LoadWorkoutList(workout);
+		List<Workout> workouts = WorkoutManager.instance.LoadWorkoutList(workout);
 //		foreach (Workout w in workouts)
 //			print ("ID: " + w.GetWorkoutID(WorkoutManager.instance.GetConnectionString()));
-		SetPositions ();
+		SetPositions (workouts);
 //		foreach (Vector3 v in positions) {
 //			print (v);
 //		}
@@ -49,9 +53,9 @@ public class GraphDisplay : MonoBehaviour {
 //		workouts.Add (new Workout ("Chins", tempList3, 30));
 //	}
 
-	private void SetPositions() {
+	private void SetPositions(List<Workout> workouts) {
 		if (workouts.Count > 0) {
-			List<Workout> sortedList = sortWorkouts (workouts);
+			List<Workout> sortedList = SortWorkouts (workouts);
 //			List<Workout> sortedList = workouts;
 			double lowestValue = sortedList [0].GetMeanValue ();
 			double highestValue = sortedList [sortedList.Count - 1].GetMeanValue ();
@@ -66,7 +70,7 @@ public class GraphDisplay : MonoBehaviour {
 		}
 	}
 
-	private List<Workout> sortWorkouts(List<Workout> list){
+	private List<Workout> SortWorkouts(List<Workout> list){
 		Workout[] tempArr = new Workout[list.Count];
 		list.CopyTo (tempArr);
 		List<Workout> tempList = new List<Workout> (tempArr);

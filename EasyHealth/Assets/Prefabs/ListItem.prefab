@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222951101711798046}
   - component: {fileID: 114501800226374568}
   - component: {fileID: 114490616795148042}
+  - component: {fileID: 114693020042959584}
   m_Layer: 5
   m_Name: ListItem
   m_TagString: Untagged
@@ -85,8 +86,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AddSet
+      - m_Target: {fileID: 114693020042959584}
+        m_MethodName: LoadGraphData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -117,7 +118,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: d169ea5b4afb2cd448b94d16c4eea8a4, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -125,6 +126,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114693020042959584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905929010697012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e9cd4ab1acec845b4e386edb6d7244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 114720385958537638}
 --- !u!114 &114720385958537638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,9 +197,9 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 482.45, y: -76.8}
   m_SizeDelta: {x: 940.9, y: 113.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224924270037123954
