@@ -26,6 +26,15 @@ public class DropdownScript : MonoBehaviour {
 //		}
 //	}
 
+	public void LoadListData(){
+//		ClearList ();
+		foreach (string s in WorkoutManager.instance.LoadExerciseList()){
+			print ("Exercise: " + s);
+			GameObject listItem = Instantiate (listItemPrefab, container);
+			listItem.GetComponent<ExerciseListItem> ().SetText (s);
+		}
+	}
+
 	public void ShowList(bool show){
 		list.SetActive (show); 
 	}
@@ -35,8 +44,8 @@ public class DropdownScript : MonoBehaviour {
 	}
 
 	public void ClearList(){
-		foreach (GameObject g in container) {
-			GameObject.Destroy (g);
+		foreach (Transform g in container.transform) {
+			GameObject.Destroy (g.gameObject);
 		}
 	}
 }

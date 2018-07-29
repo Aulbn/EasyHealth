@@ -12,8 +12,8 @@ public class StatsManager : MonoBehaviour {
 		instance = this;
 	}
 
-	public void LoadExerciseList(){
-		dropDown.SetList (WorkoutManager.instance.LoadExerciseList ());
-	}
+//	public void LoadExerciseList(){
+//		dropDown.SetList (WorkoutManager.instance.LoadExerciseList ());
+//	}
 
 }

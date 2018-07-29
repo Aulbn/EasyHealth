@@ -7,7 +7,6 @@ using Mono.Data.Sqlite;
 using UnityEngine.UI;
 
 public class GraphDisplay : MonoBehaviour {
-
 	public InputField inputField;
 
 //	private List<Workout> workouts = new List<Workout>();
@@ -25,7 +24,7 @@ public class GraphDisplay : MonoBehaviour {
 
 	void Start(){
 		lr = GetComponent<LineRenderer> ();
-		MakeGraph ("Dips");
+//		MakeGraph ("Dips");
 	}
 
 	public void MakeGraph(string workout){
@@ -54,23 +53,23 @@ public class GraphDisplay : MonoBehaviour {
 //	}
 
 	private void SetPositions(List<Workout> workouts) {
+		positions.Clear ();
 		if (workouts.Count > 0) {
 			List<Workout> sortedList = SortWorkouts (workouts);
-//			List<Workout> sortedList = workouts;
 			double lowestValue = sortedList [0].GetMeanValue ();
 			double highestValue = sortedList [sortedList.Count - 1].GetMeanValue ();
-
+			
 			lr.positionCount = workouts.Count;
 			for (int i = 0; i < workouts.Count; i++) {
-				positions.Add (new Vector3 ((float)(i * (graphWidth / (sortedList.Count - 1)) - graphWidth / 2), (float)(((workouts [i].GetMeanValue () - lowestValue) * (graphHeight / (highestValue - lowestValue)))) + graphBot, 0));
-//				Debug.Log ((((workouts [i].GetMeanValue () - lowestValue) * (graphHeight / (highestValue - lowestValue)))));
+				int index = (i > 0 ? 1 : 0);
+				positions.Add (new Vector3 ((float)(index * (graphWidth * (i + 1)/workouts.Count)), (float)(((workouts [i].GetMeanValue () - lowestValue) * (graphHeight / (highestValue - lowestValue)))) + graphBot, 0));
 			}
 
 			lr.SetPositions (positions.ToArray());
 		}
 	}
 
-	private List<Workout> SortWorkouts(List<Workout> list){
+	private List<Workout> SortWorkouts(List<Workout> list){//-------SORTERAR BARA RÄTT FÖRSTA GÅNGEN
 		Workout[] tempArr = new Workout[list.Count];
 		list.CopyTo (tempArr);
 		List<Workout> tempList = new List<Workout> (tempArr);
@@ -95,5 +94,9 @@ public class GraphDisplay : MonoBehaviour {
 //			print ("tempLists: " + w.GetMeanValue());
 //		}
 		return tempList;
+	}
+
+	public void ClearLineRenderer(){
+		lr.positionCount = 0;
 	}
 }

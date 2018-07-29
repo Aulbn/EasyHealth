@@ -82,7 +82,7 @@ public class AddWorkout : MonoBehaviour {
 
 		if (setList.Count > 0 && !string.IsNullOrEmpty (exerciseInput.text)) {
 
-			if (restInput.text != "")
+			if (restInput.text.Trim() != "")
 				rest = int.Parse (restInput.text);
 
 			for (int i = 0; i < setList.Count; i++) {

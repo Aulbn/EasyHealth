@@ -45,7 +45,8 @@ public class AppManager : MonoBehaviour {
 		CloseAllWindows ();
 		statsManager.gameObject.SetActive (true);
 		backButton.SetActive (true);
-		statsManager.LoadExerciseList ();
+		statsManager.graphDisplay.ClearLineRenderer ();
+//		statsManager.LoadExerciseList ();
 	}
 
 }

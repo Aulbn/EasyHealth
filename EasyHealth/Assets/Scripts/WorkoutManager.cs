@@ -19,10 +19,10 @@ public class WorkoutManager : MonoBehaviour {
 	}
 
 	void Start () {
-		List<string> tempList = LoadExerciseList();
-		foreach (string s in tempList) {
-			print (s);
-		}
+//		List<string> tempList = LoadExerciseList();
+//		foreach (string s in tempList) {
+//			print (s);
+//		}
 	}
 
 	public List<string> LoadExerciseList (){
